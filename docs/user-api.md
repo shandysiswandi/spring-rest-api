@@ -2,10 +2,16 @@
 
 ## Registration
 
-description for this endpoint
+Endpoint to register a new user.
 
 - `METHOD`: POST
 - `PATH`: /api/auth/registration
+- `Request Header`:
+
+  ```
+  Content-type: application/json; charset=utf-8
+  ```
+
 - `Request Body`:
 
   ```json
@@ -67,10 +73,16 @@ description for this endpoint
 
 ## Login
 
-description for this endpoint
+Endpoint to authenticate a user.
 
 - `METHOD`: POST
 - `PATH`: /api/auth/login
+- `Request Header`:
+
+  ```
+  Content-type: application/json; charset=utf-8
+  ```
+
 - `Request Body`:
 
   ```json
@@ -86,7 +98,11 @@ description for this endpoint
 
   ```json
   {
-    "result": true,
+    "result": {
+      "token": "ay....",
+      "type": "Bearer",
+      "expired": "123456789" // millisecond
+    },
     "message": "Succesfully"
   }
   ```
@@ -131,19 +147,20 @@ description for this endpoint
 
 ## Logout
 
+Endpoint to logout current session.
 
-description for this endpoint
+- `METHOD`: DELETE
+- `PATH`: /api/auth/logout
+- `Request Header`:
 
-- `METHOD`: POST
-- `PATH`: /api/auth/registration
+  ```
+  Authorization: Bearer ay......
+  ```
+
 - `Request Body`:
 
   ```json
-  {
-    "name": "full name",
-    "username": "username",
-    "password": "password"
-  }
+  none
   ```
 
 - `Response Body`:
@@ -157,30 +174,13 @@ description for this endpoint
   }
   ```
 
-  - 400
+  
+  - 401
 
   ```json
   {
-    "message": "Bad Request",
-    "errors": "request cannot be decode"
-  }
-  ```
-
-  - 409
-
-  ```json
-  {
-    "message": "Conflict",
-    "errors": "Username is exists"
-  }
-  ```
-
-  - 422
-
-  ```json
-  {
-    "message": "Validation Fails",
-    "errors": "Username must be unique, Username ...."
+    "message": "Unauthorized",
+    "errors": "Invalid Credencial"
   }
   ```
 
@@ -197,19 +197,20 @@ description for this endpoint
 
 ## Get Profile
 
+Endpoint to get current user.
 
-description for this endpoint
+- `METHOD`: GET
+- `PATH`: /api/users/profile
+- `Request Header`:
 
-- `METHOD`: POST
-- `PATH`: /api/auth/registration
+  ```
+  Authorization: Bearer ay......
+  ```
+
 - `Request Body`:
 
-  ```json
-  {
-    "name": "full name",
-    "username": "username",
-    "password": "password"
-  }
+  ```
+  none
   ```
 
 - `Response Body`:
@@ -218,35 +219,21 @@ description for this endpoint
 
   ```json
   {
-    "result": true,
+    "result": {
+      "username": "username",
+      "name": "full name",
+      "id": 1
+    },
     "message": "Succesfully"
   }
   ```
 
-  - 400
+  - 401
 
   ```json
   {
-    "message": "Bad Request",
-    "errors": "request cannot be decode"
-  }
-  ```
-
-  - 409
-
-  ```json
-  {
-    "message": "Conflict",
-    "errors": "Username is exists"
-  }
-  ```
-
-  - 422
-
-  ```json
-  {
-    "message": "Validation Fails",
-    "errors": "Username must be unique, Username ...."
+    "message": "Unauthorized",
+    "errors": "Invalid Token"
   }
   ```
 
@@ -263,19 +250,20 @@ description for this endpoint
 
 ## Get User By Username
 
+Endpoint to get a user by username.
 
-description for this endpoint
+- `METHOD`: GET
+- `PATH`: /api/users/:username
+- `Request Header`:
 
-- `METHOD`: POST
-- `PATH`: /api/auth/registration
+  ```
+  Authorization: Bearer ay......
+  ```
+
 - `Request Body`:
 
-  ```json
-  {
-    "name": "full name",
-    "username": "username",
-    "password": "password"
-  }
+  ```
+  none
   ```
 
 - `Response Body`:
@@ -284,35 +272,30 @@ description for this endpoint
 
   ```json
   {
-    "result": true,
+    "result": {
+      "username": "username",
+      "name": "full name",
+      "id": 1
+    },
     "message": "Succesfully"
   }
   ```
 
-  - 400
+  - 401
 
   ```json
   {
-    "message": "Bad Request",
-    "errors": "request cannot be decode"
+    "message": "Unauthorized",
+    "errors": "Invalid Token"
   }
   ```
 
-  - 409
+  - 403
 
   ```json
   {
-    "message": "Conflict",
-    "errors": "Username is exists"
-  }
-  ```
-
-  - 422
-
-  ```json
-  {
-    "message": "Validation Fails",
-    "errors": "Username must be unique, Username ...."
+    "message": "Forbidden",
+    "errors": "You dont have access"
   }
   ```
 
@@ -329,18 +312,23 @@ description for this endpoint
 
 ## Update User
 
+Endpoint to partial update a user.
 
-description for this endpoint
+- `METHOD`: PATCH
+- `PATH`: /api/users/:id
+- `Request Header`:
 
-- `METHOD`: POST
-- `PATH`: /api/auth/registration
+  ```
+  Authorization: Bearer ay......
+  Content-type: application/json; charset=utf-8
+  ```
+
 - `Request Body`:
 
   ```json
   {
     "name": "full name",
-    "username": "username",
-    "password": "password"
+    "username": "username"
   }
   ```
 
@@ -390,6 +378,3 @@ description for this endpoint
     "errors": "Sorry, an internal server error occurred. Please try again later."
   }
   ```
-
----
-
