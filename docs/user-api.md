@@ -101,7 +101,7 @@ Endpoint to authenticate a user.
     "result": {
       "token": "ay....",
       "type": "Bearer",
-      "expired": "123456789" // millisecond
+      "expired_at": "123456789" // millisecond
     },
     "message": "Succesfully"
   }
