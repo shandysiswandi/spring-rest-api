@@ -7,33 +7,33 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shandysiswandi.restapi.model.RestResponse;
+import com.shandysiswandi.restapi.model.AppResponse;
 
 @RestController
 public class UserController {
 
     @GetMapping(path = "/api/users/profile", produces = MediaType.APPLICATION_JSON_VALUE)
-    public RestResponse<Boolean> profile() {
+    public AppResponse<Boolean> profile() {
 
-        return RestResponse.<Boolean>builder()
+        return AppResponse.<Boolean>builder()
                 .result(true)
                 .message("Successfully get user profile")
                 .build();
     }
 
     @GetMapping(path = "/api/users/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public RestResponse<Boolean> getByUsername(@PathVariable("username") String username) {
+    public AppResponse<Boolean> getByUsername(@PathVariable("username") String username) {
 
-        return RestResponse.<Boolean>builder()
+        return AppResponse.<Boolean>builder()
                 .result(true)
                 .message("Successfully get user by username")
                 .build();
     }
 
     @PutMapping(path = "/api/users/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public RestResponse<Boolean> update(@PathVariable("id") long id, @RequestBody String req) {
+    public AppResponse<Boolean> update(@PathVariable("id") long id, @RequestBody String req) {
 
-        return RestResponse.<Boolean>builder()
+        return AppResponse.<Boolean>builder()
                 .result(true)
                 .message("Successfully update user")
                 .build();

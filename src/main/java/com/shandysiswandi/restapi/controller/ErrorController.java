@@ -23,7 +23,7 @@ import org.springframework.web.servlet.resource.NoResourceFoundException;
 import com.shandysiswandi.restapi.exception.ConflictException;
 import com.shandysiswandi.restapi.exception.ForbiddenException;
 import com.shandysiswandi.restapi.exception.UnauthorizeException;
-import com.shandysiswandi.restapi.model.RestResponse;
+import com.shandysiswandi.restapi.model.AppResponse;
 
 import jakarta.validation.ConstraintViolationException;
 
@@ -39,8 +39,8 @@ public class ErrorController {
                         MethodArgumentNotValidException.class,
                         HandlerMethodValidationException.class,
         })
-        public ResponseEntity<RestResponse<String>> badRequestException(Exception e) {
-                var body = RestResponse.<String>builder()
+        public ResponseEntity<AppResponse<String>> badRequestException(Exception e) {
+                var body = AppResponse.<String>builder()
                                 .message("Bad Request")
                                 .errors("Your request can't be proccess")
                                 .build();
@@ -48,8 +48,8 @@ public class ErrorController {
         }
 
         @ExceptionHandler(UnauthorizeException.class)
-        public ResponseEntity<RestResponse<String>> unauthorizationException(UnauthorizeException e) {
-                var body = RestResponse.<String>builder()
+        public ResponseEntity<AppResponse<String>> unauthorizationException(UnauthorizeException e) {
+                var body = AppResponse.<String>builder()
                                 .message("Unauthorized")
                                 .errors(e.getMessage())
                                 .build();
@@ -57,8 +57,8 @@ public class ErrorController {
         }
 
         @ExceptionHandler(ForbiddenException.class)
-        public ResponseEntity<RestResponse<String>> forbiddenException(ForbiddenException e) {
-                var body = RestResponse.<String>builder()
+        public ResponseEntity<AppResponse<String>> forbiddenException(ForbiddenException e) {
+                var body = AppResponse.<String>builder()
                                 .message("Forbidden")
                                 .errors(e.getMessage())
                                 .build();
@@ -66,8 +66,8 @@ public class ErrorController {
         }
 
         @ExceptionHandler({ NoHandlerFoundException.class, NoResourceFoundException.class })
-        public ResponseEntity<RestResponse<String>> notFoundException(Exception e) {
-                var body = RestResponse.<String>builder()
+        public ResponseEntity<AppResponse<String>> notFoundException(Exception e) {
+                var body = AppResponse.<String>builder()
                                 .message("Not Found")
                                 .errors("Resource not found")
                                 .build();
@@ -75,8 +75,8 @@ public class ErrorController {
         }
 
         @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-        public ResponseEntity<RestResponse<String>> methodNotAllowException(HttpRequestMethodNotSupportedException e) {
-                var body = RestResponse.<String>builder()
+        public ResponseEntity<AppResponse<String>> methodNotAllowException(HttpRequestMethodNotSupportedException e) {
+                var body = AppResponse.<String>builder()
                                 .message("Method Not Allowed")
                                 .errors("The request method you used is not supported")
                                 .build();
@@ -84,8 +84,8 @@ public class ErrorController {
         }
 
         @ExceptionHandler(ConflictException.class)
-        public ResponseEntity<RestResponse<String>> conflictException(ConflictException e) {
-                var body = RestResponse.<String>builder()
+        public ResponseEntity<AppResponse<String>> conflictException(ConflictException e) {
+                var body = AppResponse.<String>builder()
                                 .message("Conflict")
                                 .errors(e.getMessage())
                                 .build();
@@ -93,8 +93,8 @@ public class ErrorController {
         }
 
         @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
-        public ResponseEntity<RestResponse<String>> mediaTypeException(HttpMediaTypeNotSupportedException e) {
-                var body = RestResponse.<String>builder()
+        public ResponseEntity<AppResponse<String>> mediaTypeException(HttpMediaTypeNotSupportedException e) {
+                var body = AppResponse.<String>builder()
                                 .message("Unsupported Media Type")
                                 .errors("The media type of your request is not supported")
                                 .build();
@@ -102,8 +102,8 @@ public class ErrorController {
         }
 
         @ExceptionHandler(ConstraintViolationException.class)
-        public ResponseEntity<RestResponse<String>> validationException(ConstraintViolationException e) {
-                var body = RestResponse.<String>builder()
+        public ResponseEntity<AppResponse<String>> validationException(ConstraintViolationException e) {
+                var body = AppResponse.<String>builder()
                                 .message("Validation Fails")
                                 .errors(e.getMessage())
                                 .build();
@@ -116,8 +116,8 @@ public class ErrorController {
                         HttpMessageNotWritableException.class,
                         MethodValidationException.class,
         })
-        public ResponseEntity<RestResponse<String>> internalException(Exception e) {
-                var body = RestResponse.<String>builder()
+        public ResponseEntity<AppResponse<String>> internalException(Exception e) {
+                var body = AppResponse.<String>builder()
                                 .message("General Error")
                                 .errors("Sorry, an internal server error occurred. Please try again later")
                                 .build();

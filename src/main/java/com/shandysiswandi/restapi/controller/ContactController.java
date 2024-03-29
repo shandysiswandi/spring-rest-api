@@ -9,51 +9,51 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shandysiswandi.restapi.model.RestResponse;
+import com.shandysiswandi.restapi.model.AppResponse;
 
 @RestController
 public class ContactController {
 
     @PostMapping(path = "/api/contacts", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public RestResponse<Boolean> create(@RequestBody String req) {
+    public AppResponse<Boolean> create(@RequestBody String req) {
 
-        return RestResponse.<Boolean>builder()
+        return AppResponse.<Boolean>builder()
                 .result(true)
                 .message("Successfully create contact")
                 .build();
     }
 
     @GetMapping(path = "/api/contacts/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public RestResponse<Boolean> get(@PathVariable("id") long id) {
+    public AppResponse<Boolean> get(@PathVariable("id") long id) {
 
-        return RestResponse.<Boolean>builder()
+        return AppResponse.<Boolean>builder()
                 .result(true)
                 .message("Successfully get contact")
                 .build();
     }
 
     @GetMapping(path = "/api/contacts", produces = MediaType.APPLICATION_JSON_VALUE)
-    public RestResponse<Boolean> list() {
+    public AppResponse<Boolean> list() {
 
-        return RestResponse.<Boolean>builder()
+        return AppResponse.<Boolean>builder()
                 .result(true)
                 .message("Successfully list contact")
                 .build();
     }
 
     @PutMapping(path = "/api/contacts/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public RestResponse<Boolean> update(@PathVariable("id") long id, @RequestBody String req) {
+    public AppResponse<Boolean> update(@PathVariable("id") long id, @RequestBody String req) {
 
-        return RestResponse.<Boolean>builder()
+        return AppResponse.<Boolean>builder()
                 .result(true)
                 .message("Successfully update contact")
                 .build();
     }
 
     @DeleteMapping(path = "/api/contacts/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public RestResponse<Boolean> delete(@PathVariable("id") long id) {
+    public AppResponse<Boolean> delete(@PathVariable("id") long id) {
 
-        return RestResponse.<Boolean>builder()
+        return AppResponse.<Boolean>builder()
                 .result(true)
                 .message("Successfully delete contact")
                 .build();
