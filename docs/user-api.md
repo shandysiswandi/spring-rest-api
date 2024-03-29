@@ -112,6 +112,15 @@ Endpoint to partial update a user.
   }
   ```
 
+  - 403
+
+  ```json
+  {
+    "message": "Forbidden",
+    "errors": "You dont have access"
+  }
+  ```
+
   - 409
 
   ```json
