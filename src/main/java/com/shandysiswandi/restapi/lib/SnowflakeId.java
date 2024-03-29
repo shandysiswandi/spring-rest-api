@@ -15,6 +15,7 @@ import java.util.Enumeration;
  * in your distributed system cluster.
  */
 public class SnowflakeId {
+    @SuppressWarnings("unused")
     private static final int UNUSED_BITS = 1; // Sign bit, Unused (always set to 0)
     private static final int EPOCH_BITS = 41;
     private static final int NODE_ID_BITS = 10;
