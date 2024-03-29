@@ -9,11 +9,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class LoginResponse {
+public class LoginOutput {
 
     private String token;
 
     private String type;
 
     private Long expiredAt; // millisecond
+
 }
