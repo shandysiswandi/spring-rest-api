@@ -29,16 +29,7 @@ Endpoint to register a new user.
   ```json
   {
     "result": true,
-    "message": "Succesfully"
-  }
-  ```
-
-  - 400
-
-  ```json
-  {
-    "message": "Bad Request",
-    "errors": "request cannot be decode"
+    "message": "Successfully"
   }
   ```
 
@@ -48,24 +39,6 @@ Endpoint to register a new user.
   {
     "message": "Conflict",
     "errors": "Username is exists"
-  }
-  ```
-
-  - 422
-
-  ```json
-  {
-    "message": "Validation Fails",
-    "errors": "Username must be unique, Username ...."
-  }
-  ```
-
-  - 500
-
-  ```json
-  {
-    "message": "General Error",
-    "errors": "Sorry, an internal server error occurred. Please try again later."
   }
   ```
 
@@ -103,25 +76,7 @@ Endpoint to authenticate a user.
       "type": "Bearer",
       "expired_at": "123456789" // millisecond
     },
-    "message": "Succesfully"
-  }
-  ```
-
-  - 400
-
-  ```json
-  {
-    "message": "Bad Request",
-    "errors": "request cannot be decode"
-  }
-  ```
-
-  - 401
-
-  ```json
-  {
-    "message": "Unauthorized",
-    "errors": "Invalid Credencial"
+    "message": "Successfully"
   }
   ```
 
@@ -131,15 +86,6 @@ Endpoint to authenticate a user.
   {
     "message": "Too Many Requests",
     "errors": "Temporary block"
-  }
-  ```
-
-  - 500
-
-  ```json
-  {
-    "message": "General Error",
-    "errors": "Sorry, an internal server error occurred. Please try again later."
   }
   ```
 
@@ -170,26 +116,7 @@ Endpoint to logout current session.
   ```json
   {
     "result": true,
-    "message": "Succesfully"
-  }
-  ```
-
-  
-  - 401
-
-  ```json
-  {
-    "message": "Unauthorized",
-    "errors": "Invalid Credencial"
-  }
-  ```
-
-  - 500
-
-  ```json
-  {
-    "message": "General Error",
-    "errors": "Sorry, an internal server error occurred. Please try again later."
+    "message": "Successfully"
   }
   ```
 
@@ -224,25 +151,7 @@ Endpoint to get current user.
       "name": "full name",
       "id": 1
     },
-    "message": "Succesfully"
-  }
-  ```
-
-  - 401
-
-  ```json
-  {
-    "message": "Unauthorized",
-    "errors": "Invalid Token"
-  }
-  ```
-
-  - 500
-
-  ```json
-  {
-    "message": "General Error",
-    "errors": "Sorry, an internal server error occurred. Please try again later."
+    "message": "Successfully"
   }
   ```
 
@@ -277,16 +186,7 @@ Endpoint to get a user by username.
       "name": "full name",
       "id": 1
     },
-    "message": "Succesfully"
-  }
-  ```
-
-  - 401
-
-  ```json
-  {
-    "message": "Unauthorized",
-    "errors": "Invalid Token"
+    "message": "Successfully"
   }
   ```
 
@@ -296,15 +196,6 @@ Endpoint to get a user by username.
   {
     "message": "Forbidden",
     "errors": "You dont have access"
-  }
-  ```
-
-  - 500
-
-  ```json
-  {
-    "message": "General Error",
-    "errors": "Sorry, an internal server error occurred. Please try again later."
   }
   ```
 
@@ -339,16 +230,7 @@ Endpoint to partial update a user.
   ```json
   {
     "result": true,
-    "message": "Succesfully"
-  }
-  ```
-
-  - 400
-
-  ```json
-  {
-    "message": "Bad Request",
-    "errors": "request cannot be decode"
+    "message": "Successfully"
   }
   ```
 
@@ -358,23 +240,5 @@ Endpoint to partial update a user.
   {
     "message": "Conflict",
     "errors": "Username is exists"
-  }
-  ```
-
-  - 422
-
-  ```json
-  {
-    "message": "Validation Fails",
-    "errors": "Username must be unique, Username ...."
-  }
-  ```
-
-  - 500
-
-  ```json
-  {
-    "message": "General Error",
-    "errors": "Sorry, an internal server error occurred. Please try again later."
   }
   ```
